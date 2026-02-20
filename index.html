@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Special Delivery 💝</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(#ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+}
+.section {
+  display: none;
+  padding: 40px 20px;
+}
+.active {
+  display: block;
+}
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+.yes { background: #4CAF50; color: white; }
+.no { background: #f44336; color: white; }
+.gift {
+  font-size: 80px;
+  cursor: pointer;
+}
+.wheel {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(#ffeb3b, #ff5722, #e91e63, #9c27b0);
+  margin: auto;
+}
+</style>
+</head>
+
+<body>
+
+<!-- GIFT -->
+<div class="section active" id="gift">
+  <h1>🎁 A Special Delivery</h1>
+  <p>Tap the gift to open</p>
+  <div class="gift" onclick="openGift()">🎁</div>
+</div>
+
+<!-- MESSAGE -->
+<div class="section" id="message">
+  <h2>This is not just a message 💌</h2>
+  <p>It’s a warm hug wrapped in words</p>
+  <button onclick="showProposal()">Continue</button>
+</div>
+
+<!-- YES NO -->
+<div class="section" id="proposal">
+  <h2>Will you be mine? 💖</h2>
+  <button class="yes" onclick="showWheel()">YES 😍</button>
+  <button class="no" onclick="alert('Try again 😌')">NO 🙈</button>
+</div>
+
+<!-- WHEEL -->
+<div class="section" id="wheelSection">
+  <h2>Spin the Wheel of Love 🎡</h2>
+  <div class="wheel"></div>
+  <p id="reason"></p>
+  <button onclick="spin()">Spin</button>
+  <button onclick="showLetter()">Next</button>
+</div>
+
+<!-- LETTER -->
+<div class="section" id="letter">
+  <h2>💌 A Letter for You</h2>
+  <p>
+    From the moment you came into my life,<br>
+    everything felt warmer, brighter, and safer.<br><br>
+    This website is my small way of saying<br>
+    **you mean the world to me** 💖
+  </p>
+</div>
+
+<script>
+function openGift() {
+  show('message');
+}
+function showProposal() {
+  show('proposal');
+}
+function showWheel() {
+  show('wheelSection');
+}
+function showLetter() {
+  show('letter');
+}
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function spin() {
+  const reasons = [
+    "Your smile 🥹",
+    "Your kindness 💕",
+    "You make me feel safe 🤍",
+    "You understand me 🌸",
+    "You are YOU 💖"
+  ];
+  document.getElementById('reason').innerText =
+    reasons[Math.floor(Math.random() * reasons.length)];
+}
+</script>
+
+</body>
+</html>
